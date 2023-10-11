@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import { faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faUsers } from '@fortawesome/free-solid-svg-icons';
 const path = process.env.PUBLIC_URL;
 //1.useEffect로 컴포넌트마운트되자마자 fetch외부데이터 가져옴
 //2.데이터가 다 받아지면 useState로 state에 담아줌
@@ -22,6 +23,14 @@ export default function Department() {
 
 	return (
 		<Layout title={'Department'}>
+			<div className='Teamlogo'>
+				<FontAwesomeIcon icon={faUsers} />
+			</div>
+			<div className='Teamtit'>
+				<h2>Our Team</h2>
+				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio, delectus!</p>
+				<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+			</div>
 			<div className='memberBox'>
 				{Department.map((member, idx) => {
 					return (
