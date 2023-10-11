@@ -40,18 +40,21 @@
 		justify-content: space-between;
 
 		article {
-			width: 30%;
-			margin-bottom: 100px;
-
+			width: 25%;
+			margin-bottom: 50px;
+			background: #fff;
+			margin-right: 10px;
+			border-radius: 10%;
 			.pic {
 				width: 100%;
-				height: 30vw;
-
+				height: 15vw;
 				img {
-					width: 100%;
+					width: 80%;
 					height: 100%;
 					object-fit: cover;
 					border-radius: 100%;
+					filter: grayscale(100%);
+					transition: 0.5s;
 				}
 			}
 
@@ -62,6 +65,29 @@
 			p {
 				text-align: center;
 				margin-bottom: 10px;
+			}
+			.sns {
+				display: flex;
+				justify-content: center;
+				.btn {
+					background-color: rgba(26, 233, 233, 0.7);
+					width: 40px;
+					border-radius: 20%;
+					text-align: center;
+					margin: 0px 10px;
+					margin-bottom: 15px;
+					a {
+						font-size: 2rem;
+					}
+				}
+			}
+			&.on {
+				.pic {
+					img {
+						filter: grayscale(0%);
+						box-shadow: 6px 8px 10px rgba(131, 128, 132, 0.7);
+					}
+				}
 			}
 		}
 	}
