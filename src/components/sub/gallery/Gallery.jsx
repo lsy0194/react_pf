@@ -15,8 +15,8 @@ export default function Gallery() {
 	const [Loader, setLoader] = useState(true);
 	const [Fix, setFix] = useState(false);
 	const [IsUser, setIsUser] = useState(true);
+	const [IsModal, setIsModal] = useState(false);
 	const [ActiveURL, setActiveURL] = useState('');
-	const [Open, setOpen] = useState(false);
 
 	const fetchData = async (opt) => {
 		let count = 0;
@@ -143,26 +143,16 @@ export default function Gallery() {
 					>
 						{Pics.map((data, idx) => {
 							return (
-								<article
-									key={idx}
-									onClick={(e) => {
-										setActiveURL(e.target.getAttribute('alt'));
-										setOpen(true);
-									}}
-									onMouseOver={(e) => {
-										e.preventDefault();
-										e.currentTarget.classList.add('on');
-									}}
-									onMouseLeave={(e) => {
-										e.preventDefault();
-										e.currentTarget.classList.remove('on');
-									}}
-								>
+								<article key={idx}>
 									<div className='inner'>
 										<img
 											className='pic'
 											src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
 											alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
+											onClick={(e) => {
+												setActiveURL(e.target.getAttribute('alt'));
+												setIsModal(true);
+											}}
 										/>
 										<h2>{data.title}</h2>
 
@@ -192,9 +182,8 @@ export default function Gallery() {
 					</Masonry>
 				</div>
 			</Layout>
-
-			{Open && (
-				<Modal>
+			{IsModal && (
+				<Modal setIsModal={setIsModal}>
 					<img src={ActiveURL} alt='img' />
 				</Modal>
 			)}

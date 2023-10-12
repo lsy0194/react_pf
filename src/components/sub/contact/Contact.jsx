@@ -141,31 +141,29 @@ export default function Contact() {
 					</form>
 				</div>
 				<div className='right'>
-					<h3>phone</h3>
-					<p>(255)-385-1239</p>
+					<h3 className='phtit'>Phone</h3>
+					<p className='phone'>(255)-385-1239</p>
 					<h3>Address</h3>
 					<p>서울 마포구 성암로 330</p>
 					<h3>Email</h3>
 					<p>tktmadltmddu@naver.com</p>
 				</div>
 			</div>
-			<div className='mapbox'>
-				{/* <button onClick={() => setTraffic(true)}>주변 교통정보 보기</button>
-			<button onClick={() => setTraffic(false)}>주변 교통정보 끄기</button> */}
-				<button onClick={() => setTraffic(!Traffic)}>
-					{Traffic ? '교통정보 끄기' : '교통정보 켜기'}
-				</button>
-				<button onClick={setCenter}>지도위치초기화</button>
-				<button
-					onClick={() => {
-						setIsMap(!IsMap);
-					}}
-				>
-					{IsMap ? '지도보기' : '로드뷰보기'}
-				</button>
-				<div className='container'>
-					<div className={`view  ${IsMap ? '' : 'on'}`} ref={view}></div>
-					<div className={`map  ${IsMap ? 'on' : ''}`} ref={map}></div>
+			<div id='mapBox'>
+				<div className='btns'>
+					{/* <button onClick={() => setTraffic(true)}>주변 교통정보 보기</button>
+					button onClick={() => setTraffic(false)}>주변 교통정보 끄기</button> */}
+					<button onClick={() => setTraffic(!Traffic)}>
+						{Traffic ? '교통정보 끄기' : '교통정보 켜기'}
+					</button>
+					<button onClick={setCenter}>지도위치초기화</button>
+					<button
+						onClick={() => {
+							setIsMap(!IsMap);
+						}}
+					>
+						{IsMap ? '지도보기' : '로드뷰보기'}
+					</button>
 				</div>
 				<ul>
 					{info.current.map((el, idx) => (
@@ -181,6 +179,10 @@ export default function Contact() {
 						</li>
 					))}
 				</ul>
+				<div className='container'>
+					<div className={`view  ${IsMap ? '' : 'on'}`} ref={view}></div>
+					<div className={`map  ${IsMap ? 'on' : ''}`} ref={map}></div>
+				</div>
 			</div>
 		</Layout>
 	);
