@@ -125,19 +125,29 @@ export default function Contact() {
 	return (
 		<Layout title={'Contact'}>
 			<div id='mailBox'>
-				<form ref={form} onSubmit={sendEmail}>
-					<div className='upper'>
-						<input type='text' name='user_name' className='nameEl' placeholder='Name' />
-						<input type='email' name='user_email' className='emailEl' placeholder='Email' />
-					</div>
-					<div className='lower'>
-						<textarea name='message' className='msgEl' placeholder='Message' />
-					</div>
-					<div className='btnSet'>
-						<input type='reset' value='Cancel' />
-						<input type='submit' value='Send' className='send' />
-					</div>
-				</form>
+				<div className='left'>
+					<form ref={form} onSubmit={sendEmail}>
+						<div className='upper'>
+							<input type='text' name='user_name' className='nameEl' placeholder='Name' />
+							<input type='email' name='user_email' className='emailEl' placeholder='Email' />
+						</div>
+						<div className='lower'>
+							<textarea name='message' className='msgEl' placeholder='Message' />
+						</div>
+						<div className='btnSet'>
+							<input type='reset' value='Cancel' />
+							<input type='submit' value='Send' className='send' />
+						</div>
+					</form>
+				</div>
+				<div className='right'>
+					<h3>phone</h3>
+					<p>(255)-385-1239</p>
+					<h3>Address</h3>
+					<p>서울 마포구 성암로 330</p>
+					<h3>Email</h3>
+					<p>tktmadltmddu@naver.com</p>
+				</div>
 			</div>
 			<div className='mapbox'>
 				{/* <button onClick={() => setTraffic(true)}>주변 교통정보 보기</button>

@@ -3,67 +3,84 @@
 		background: orange;
 	}
 	#mailBox {
-		width: 50%;
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
 		margin-bottom: 100px;
-		.upper {
-			width: 100%;
-			display: flex;
-			margin-bottom: 30px;
-
-			input[type='text'],
-			input[type='email'] {
-				width: 49%;
-				border: none;
-				padding: 10px 20px;
-				border-bottom: 1px solid #555;
-				margin-right: 50px;
-				outline: none;
-				transition: 0.5s;
-				&:focus {
-					background: lightcyan;
-				}
-			}
-		}
-		.lower {
-			width: 100%;
-			margin-bottom: 10px;
-			// label {
-			// 	display: block;
-			// 	margin-bottom: 20px;
-			// 	position: relative;
-			// 	top: 20;
-			// 	font: bold 1rem/1 'arial';
-			// 	color: #555;
-			// }
-			textarea {
+		.left {
+			width: 55%;
+			.upper {
 				width: 100%;
-				padding: 10px;
-				border: none;
-				border-bottom: 1px solid #555;
-				margin-right: 50px;
-				resize: none;
-				outline: none;
-				transition: 0.5s;
-				&:focus {
-					background: lightcyan;
+				display: flex;
+				margin-bottom: 30px;
+				justify-content: space-between;
+				input[type='text'],
+				input[type='email'] {
+					width: 48%;
+					border: none;
+					padding: 10px 20px;
+					border-bottom: 1px solid #555;
+					outline: none;
+					transition: 0.5s;
+					&:focus {
+						background: lightcyan;
+					}
+				}
+			}
+			.lower {
+				width: 100%;
+				margin-bottom: 10px;
+				// label {
+				// 	display: block;
+				// 	margin-bottom: 20px;
+				// 	position: relative;
+				// 	top: 20;
+				// 	font: bold 1rem/1 'arial';
+				// 	color: #555;
+				// }
+				textarea {
+					width: 100%;
+					height: 120px;
+					padding: 10px;
+					border: none;
+					border-bottom: 1px solid #555;
+					margin-right: 50px;
+					resize: none;
+					outline: none;
+					transition: 0.5s;
+					&:focus {
+						background: lightcyan;
+					}
+				}
+			}
+			.btnSet {
+				width: 100%;
+				padding-right: 20px;
+				display: flex;
+				justify-content: right;
+				gap: 50px;
+				input {
+					padding: 10px;
+					display: block;
+					height: 40px;
+					background: rgb(252, 172, 22);
+					border: 1px solid #666;
+					font: 1.5rem/40px 'arial';
+					color: #555;
+					text-align: center;
+					line-height: 10px;
 				}
 			}
 		}
-		.btnSet {
-			width: 100%;
-			padding-right: 20px;
-			display: flex;
-			gap: 50px;
-			input {
-				padding: 10px;
-				display: block;
-				height: 40px;
-				background: rgb(252, 172, 22);
-				border: 1px solid #666;
-				font: 1rem/40px 'arial';
-				color: #555;
-				text-align: center;
-				line-height: 10px;
+		.right {
+			width: 40%;
+			float: right;
+			h3 {
+				font: bold 1.8rem/1.5 'arial';
+			}
+			p {
+				font: normal 1.4rem/1 'arial';
+				margin-bottom: 18px;
 			}
 		}
 	}
