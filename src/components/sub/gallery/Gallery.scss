@@ -7,6 +7,42 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 	}
+	.searchBox {
+		width: 100%;
+		margin-bottom: 15px;
+		form {
+			width: 100%;
+			input {
+				width: 92%;
+				height: 2vw;
+				margin-right: 1vw;
+				border: none;
+			}
+			button {
+				width: 5%;
+				height: 2vw;
+				border: none;
+				background: darkgray;
+				color: #fff;
+			}
+		}
+	}
+	.btnSet {
+		width: 50%;
+		.my,
+		.interest {
+			width: 20%;
+			height: 30px;
+			margin-right: 10px;
+			border: none;
+			background: #fff;
+			color: #333;
+			&.on {
+				background: #333;
+				color: #fff;
+			}
+		}
+	}
 	.picFrame {
 		width: 100%;
 		opacity: 0;
@@ -23,16 +59,18 @@
 		}
 
 		article {
-			width: 25%;
-			padding: 10px;
+			width: 48%;
 			float: left;
+			padding: 5px;
+			margin-bottom: 30px;
+			border: none;
+
 			.inner {
 				width: 100%;
-				padding: 10px;
-				background: #fff;
 
-				img {
+				.pic {
 					width: 100%;
+					height: 40vw;
 				}
 				h2 {
 					font: normal 1rem/1.2 'arial';
@@ -40,13 +78,38 @@
 					margin-top: 10px;
 					margin-bottom: 40px;
 				}
-				.profile {
-					width: 100%;
+				.lower {
 					display: flex;
-					align-items: center;
-					gap: 20px;
-					span {
-						font-size: 0.8rem;
+					justify-content: space-between;
+					transition: 0.5s;
+					.profile {
+						width: 80%;
+						display: flex;
+						align-items: center;
+						gap: 20px;
+						img {
+							width: 50px;
+						}
+						span {
+							font-size: 0.8rem;
+						}
+						padding-bottom: 20px;
+					}
+					.arrow {
+						width: 15%;
+						font-size: 40px;
+						transform: rotate(45deg);
+					}
+					border-bottom: 1px solid black;
+				}
+			}
+
+			&.on {
+				.inner {
+					.lower {
+						.arrow {
+							font-size: 50px;
+						}
 					}
 				}
 			}

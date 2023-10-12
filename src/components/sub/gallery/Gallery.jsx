@@ -1,8 +1,10 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Layout from '../../common/layout/Layout';
 import Modal from '../../common/modal/Modal';
 import './Gallery.scss';
 import { useState, useEffect, useRef } from 'react';
 import Masonry from 'react-masonry-component';
+import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
 
 export default function Gallery() {
 	const refFrame = useRef(null);
@@ -117,10 +119,12 @@ export default function Gallery() {
 				</div>
 
 				<div className='btnSet' ref={refBtnSet}>
-					<button className='on' onClick={handleClickMy}>
+					<button className='my on' onClick={handleClickMy}>
 						My Gallery
 					</button>
-					<button onClick={handleClickInterest}>Interest Gallery</button>
+					<button className='interest' onClick={handleClickInterest}>
+						Interest Gallery
+					</button>
 				</div>
 
 				{Loader && (
@@ -139,32 +143,47 @@ export default function Gallery() {
 					>
 						{Pics.map((data, idx) => {
 							return (
-								<article key={idx}>
+								<article
+									key={idx}
+									onClick={(e) => {
+										setActiveURL(e.target.getAttribute('alt'));
+										setOpen(true);
+									}}
+									onMouseOver={(e) => {
+										e.preventDefault();
+										e.currentTarget.classList.add('on');
+									}}
+									onMouseLeave={(e) => {
+										e.preventDefault();
+										e.currentTarget.classList.remove('on');
+									}}
+								>
 									<div className='inner'>
 										<img
 											className='pic'
 											src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
 											alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
-											onClick={(e) => {
-												setActiveURL(e.target.getAttribute('alt'));
-												setOpen(true);
-											}}
 										/>
 										<h2>{data.title}</h2>
 
-										<div className='profile'>
-											<img
-												src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}
-												alt={data.owner}
-												onError={(e) => {
-													setFix(true);
-													e.target.setAttribute(
-														'src',
-														'https://www.flickr.com/images/buddyicon.gif'
-													);
-												}}
-											/>
-											<span onClick={handleClickProfile}>{data.owner}</span>
+										<div className='lower'>
+											<div className='profile'>
+												<img
+													src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}
+													alt={data.owner}
+													onError={(e) => {
+														setFix(true);
+														e.target.setAttribute(
+															'src',
+															'https://www.flickr.com/images/buddyicon.gif'
+														);
+													}}
+												/>
+												<span onClick={handleClickProfile}>{data.owner}</span>
+											</div>
+											<div className='arrow'>
+												<FontAwesomeIcon icon={faArrowRightLong} />
+											</div>
 										</div>
 									</div>
 								</article>
