@@ -127,18 +127,15 @@ export default function Contact() {
 			<div id='mailBox'>
 				<form ref={form} onSubmit={sendEmail}>
 					<div className='upper'>
-						<label>Name</label>
-						<input type='text' name='user_name' className='nameEl' />
-						<label>Email</label>
-						<input type='email' name='user_email' className='emailEl' />
+						<input type='text' name='user_name' className='nameEl' placeholder='Name' />
+						<input type='email' name='user_email' className='emailEl' placeholder='Email' />
 					</div>
 					<div className='lower'>
-						<label>Message</label>
-						<textarea name='message' className='msgEl' />
+						<textarea name='message' className='msgEl' placeholder='Message' />
 					</div>
 					<div className='btnSet'>
 						<input type='reset' value='Cancel' />
-						<input type='submit' value='Send' />
+						<input type='submit' value='Send' className='send' />
 					</div>
 				</form>
 			</div>
