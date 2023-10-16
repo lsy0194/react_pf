@@ -60,7 +60,16 @@ export default function Youtube() {
 						let desc = data.snippet.description;
 						let date = data.snippet.publishedAt;
 						return (
-							<article key={idx} className='Ycontent'>
+							<article
+								key={idx}
+								className='Ycontent'
+								onMouseOver={(e) => {
+									e.currentTarget.classList.add('on');
+								}}
+								onMouseLeave={(e) => {
+									e.currentTarget.classList.remove('on');
+								}}
+							>
 								<div
 									className='pic'
 									onClick={() => {

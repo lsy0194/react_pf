@@ -7,6 +7,8 @@ import Youtube from './components/sub/youtube/Youtube';
 import Members from './components/sub/members/Members';
 import Gallery from './components/sub/gallery/Gallery';
 import Contact from './components/sub/contact/Contact';
+import Community from './components/sub/community/Community';
+import Main from './components/main/mainwarp/Main';
 
 function App() {
 	return (
@@ -16,12 +18,14 @@ function App() {
 				<Route exact path='/'>
 					{/* 메인페이지 전용 헤더 */}
 					<Header isMain={true} />
+					<Main />
 				</Route>
 				<Route path='/'>
 					{/* 서브페이지 전용 헤더 */}
 					<Header isMain={true} />
 				</Route>
 			</Switch>
+			<Route path='/Community' component={Community} />
 			<Route path='/department' component={Department} />
 			<Route path='/gallery' component={Gallery} />
 			<Route path='/youtube' component={Youtube} />

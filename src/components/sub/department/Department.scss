@@ -37,6 +37,7 @@
 			background: #fff;
 			margin-right: 10px;
 			border-radius: 5%;
+			transition: 0.5s;
 			.pic {
 				position: relative;
 				width: 10vw;
@@ -81,6 +82,7 @@
 				}
 			}
 			&.on {
+				transform: scale(1.18);
 				.pic {
 					img {
 						filter: grayscale(0%);
