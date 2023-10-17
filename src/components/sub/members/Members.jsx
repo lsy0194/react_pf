@@ -126,7 +126,7 @@ export default function Members() {
 							{/* userid */}
 							<tr>
 								<th scope='row'>
-									<label htmlFor='userid'>userid</label>
+									<label htmlFor='userid'>ID</label>
 								</th>
 								<td>
 									<input
@@ -139,7 +139,6 @@ export default function Members() {
 									{Errs.userid && <p>{Errs.userid}</p>}
 								</td>
 							</tr>
-
 							{/* password */}
 							<tr>
 								<th scope='row'>
@@ -156,7 +155,6 @@ export default function Members() {
 									{Errs.pwd1 && <p>{Errs.pwd1}</p>}
 								</td>
 							</tr>
-
 							{/* re password */}
 							<tr>
 								<th scope='row'>
@@ -173,7 +171,6 @@ export default function Members() {
 									{Errs.pwd2 && <p>{Errs.pwd2}</p>}
 								</td>
 							</tr>
-
 							{/* email */}
 							<tr>
 								<th scope='row'>
@@ -190,7 +187,6 @@ export default function Members() {
 									{Errs.email && <p>{Errs.email}</p>}
 								</td>
 							</tr>
-
 							{/* gender */}
 							<tr>
 								<th>gender</th>
@@ -203,7 +199,6 @@ export default function Members() {
 									{Errs.gender && <p>{Errs.gender}</p>}
 								</td>
 							</tr>
-
 							{/* interests */}
 							<tr>
 								<th>interests</th>
@@ -255,7 +250,7 @@ export default function Members() {
 							</tr>
 							{/* btnSet */}
 							<tr>
-								<th colSpan='2'>
+								<th colSpan='2' className='btnSet'>
 									<input type='reset' value='cancel' onClick={resetFrom} />
 									<input type='submit' value='send' />
 								</th>

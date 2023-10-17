@@ -162,7 +162,7 @@ export default function Contact() {
 							setIsMap(!IsMap);
 						}}
 					>
-						{IsMap ? '지도보기' : '로드뷰보기'}
+						{IsMap ? '로드뷰보기' : '지도보기'}
 					</button>
 				</div>
 				<ul>

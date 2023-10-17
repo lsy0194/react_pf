@@ -143,7 +143,15 @@ export default function Gallery() {
 					>
 						{Pics.map((data, idx) => {
 							return (
-								<article key={idx}>
+								<article
+									key={idx}
+									onMouseEnter={(e) => {
+										e.currentTarget.classList.add('on');
+									}}
+									onMouseLeave={(e) => {
+										e.currentTarget.classList.remove('on');
+									}}
+								>
 									<div className='inner'>
 										<img
 											className='pic'

@@ -19,7 +19,7 @@ function News() {
 					else
 						return (
 							<article key={idx}>
-								<h2>{el.title}</h2>
+								<h2>{el.title.length > 10 ? el.title.substr(0, 6) + '...' : el.title}</h2>
 								<p>{el.content}</p>
 							</article>
 						);

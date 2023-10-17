@@ -64,7 +64,7 @@
 			padding: 5px;
 			margin-bottom: 30px;
 			border: none;
-
+			transition: 0.5s;
 			.inner {
 				width: 100%;
 
@@ -102,6 +102,12 @@
 					}
 					border-bottom: 1px solid black;
 				}
+			}
+			&.on {
+				img {
+				}
+				transform: scale(1.05);
+				z-index: 2;
 			}
 		}
 	}
