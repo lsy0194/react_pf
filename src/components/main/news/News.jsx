@@ -12,18 +12,21 @@ function News() {
 	const [Post] = useState(getLocalDate);
 	return (
 		<section className='news'>
-			<h2>News</h2>
-			<div className='postWrap'>
-				{Post.map((el, idx) => {
-					if (idx >= 4) return null;
-					else
-						return (
-							<article key={idx}>
-								<h2>{el.title.length > 10 ? el.title.substr(0, 6) + '...' : el.title}</h2>
-								<p>{el.content}</p>
-							</article>
-						);
-				})}
+			<div className='left'></div>
+			<div className='right'>
+				<h2>News</h2>
+				<div className='postWrap'>
+					{Post.map((el, idx) => {
+						if (idx >= 4) return null;
+						else
+							return (
+								<article key={idx}>
+									<h2>{el.title.length > 10 ? el.title.substr(0, 6) + '...' : el.title}</h2>
+									<p>{el.content}</p>
+								</article>
+							);
+					})}
+				</div>
 			</div>
 		</section>
 	);

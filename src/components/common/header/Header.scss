@@ -9,7 +9,9 @@
 		//color: #333;
 		color: var(--color1);
 	}
-
+	.bars {
+		display: none;
+	}
 	ul {
 		display: flex;
 		gap: 4vw;
@@ -22,9 +24,6 @@
 				color: hotpink;
 			}
 		}
-	}
-	.bars {
-		display: none;
 	}
 }
 

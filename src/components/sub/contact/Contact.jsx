@@ -141,7 +141,7 @@ export default function Contact() {
 					</form>
 				</div>
 				<div className='right'>
-					<h3 className='phtit'>Phone</h3>
+					<h3>Phone</h3>
 					<p className='phone'>(255)-385-1239</p>
 					<h3>Address</h3>
 					<p>서울 마포구 성암로 330</p>

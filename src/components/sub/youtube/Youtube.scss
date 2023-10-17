@@ -34,18 +34,59 @@
 				margin-bottom: 10px;
 				width: 100%;
 				font: bold 1.5rem/1 'arial';
+				word-break: break-all;
 			}
 			p {
 				margin-bottom: 10px;
 				width: 100%;
 				font: bold 1rem/1 'arial';
+				word-break: break-all;
 			}
 			span {
 				width: 100%;
 				font: bold 0.8rem/1 'arial';
+				word-break: break-all;
 			}
 			&.on {
 				transform: scale(1.2);
+				background-color: #fff;
+				box-shadow: 6px 8px 10px rgba(131, 128, 132, 0.7);
+			}
+		}
+	}
+}
+
+.tablet {
+	.Youtube {
+		.container {
+			.left {
+				display: none;
+			}
+			.Ycontent {
+				width: 45%;
+				&.on {
+					transform: scale(1.2);
+				}
+			}
+		}
+	}
+}
+
+.mobile {
+	.Youtube {
+		.container {
+			.left {
+				display: none;
+			}
+			display: flex;
+			flex-wrap: wrap;
+			align-content: center;
+			justify-content: center;
+			.Ycontent {
+				width: 95%;
+				&.on {
+					transform: scale(1.2);
+				}
 			}
 		}
 	}

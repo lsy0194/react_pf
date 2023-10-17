@@ -43,7 +43,7 @@ export default function Header({ isMain }) {
 					</li>
 				</ul>
 
-				<BsList font-size={30} color={'#333'} className='bars' />
+				<BsList fontSize={30} color={'#333'} className='bars' />
 			</header>
 		</>
 	);

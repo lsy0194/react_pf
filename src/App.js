@@ -9,6 +9,7 @@ import Gallery from './components/sub/gallery/Gallery';
 import Contact from './components/sub/contact/Contact';
 import Community from './components/sub/community/Community';
 import Main from './components/main/mainwarp/Main';
+import Footer from './components/common/footer/Footer';
 import { useMedia } from './hooks/useMedia';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 				<Route exact path='/'>
 					<Header isMain={true} />
 					<Main />
+					<Footer />
 				</Route>
 
 				<Route path='/'>

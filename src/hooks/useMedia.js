@@ -10,7 +10,7 @@ export const useMedia = (opt) => {
 	//합쳐진 미디어쿼리 수치값과 현재 브라우저 넓이값을 비교해서 type의 문자값을 변경해주는 함수
 	const getClientWid = () => {
 		let wid = window.innerWidth;
-		if (wid <= result.laptop) setType('');
+		if (wid >= result.laptop) setType('');
 		if (wid >= result.tablet && wid < result.laptop) setType('laptop');
 		if (wid >= result.mobile && wid < result.tablet) setType('tablet');
 		if (wid >= 0 && wid < result.mobile) setType('mobile');

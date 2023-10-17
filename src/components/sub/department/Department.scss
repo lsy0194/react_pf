@@ -93,3 +93,31 @@
 		}
 	}
 }
+
+.tablet {
+	.Department {
+		.memberBox {
+			article {
+				width: 45%;
+				.pic {
+					width: 25vw;
+					height: 25vw;
+				}
+			}
+		}
+	}
+}
+
+.mobile {
+	.Department {
+		.memberBox {
+			article {
+				width: 100%;
+				.pic {
+					width: 45vw;
+					height: 45vw;
+				}
+			}
+		}
+	}
+}

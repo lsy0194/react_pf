@@ -43,3 +43,22 @@
 		}
 	}
 }
+
+.tablet {
+	.layout {
+		.content {
+			h1 {
+				font-size: 80px;
+			}
+		}
+	}
+}
+.mobile {
+	.layout {
+		.content {
+			h1 {
+				font-size: 50px;
+			}
+		}
+	}
+}

@@ -3,7 +3,6 @@ import Layout from '../../common/layout/Layout';
 import Modal from '../../common/modal/Modal';
 import './Gallery.scss';
 import { useState, useEffect, useRef } from 'react';
-import Masonry from 'react-masonry-component';
 import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
 
 export default function Gallery() {
@@ -135,59 +134,52 @@ export default function Gallery() {
 					/>
 				)}
 				<div className='picFrame' ref={refFrame}>
-					<Masonry
-						elementType={'div'}
-						options={{ transitionDuration: '0.5s' }}
-						disableImagesLoaded={false}
-						updateOnEachImageLoad={false}
-					>
-						{Pics.map((data, idx) => {
-							return (
-								<article
-									key={idx}
-									onMouseEnter={(e) => {
-										e.currentTarget.classList.add('on');
-									}}
-									onMouseLeave={(e) => {
-										e.currentTarget.classList.remove('on');
-									}}
-								>
-									<div className='inner'>
-										<img
-											className='pic'
-											src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
-											alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
-											onClick={(e) => {
-												setActiveURL(e.target.getAttribute('alt'));
-												setIsModal(true);
-											}}
-										/>
-										<h2>{data.title}</h2>
+					{Pics.map((data, idx) => {
+						return (
+							<article
+								key={idx}
+								onMouseEnter={(e) => {
+									e.currentTarget.classList.add('on');
+								}}
+								onMouseLeave={(e) => {
+									e.currentTarget.classList.remove('on');
+								}}
+							>
+								<div className='inner'>
+									<img
+										className='pic'
+										src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
+										alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
+										onClick={(e) => {
+											setActiveURL(e.target.getAttribute('alt'));
+											setIsModal(true);
+										}}
+									/>
+									<h2>{data.title}</h2>
 
-										<div className='lower'>
-											<div className='profile'>
-												<img
-													src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}
-													alt={data.owner}
-													onError={(e) => {
-														setFix(true);
-														e.target.setAttribute(
-															'src',
-															'https://www.flickr.com/images/buddyicon.gif'
-														);
-													}}
-												/>
-												<span onClick={handleClickProfile}>{data.owner}</span>
-											</div>
-											<div className='arrow'>
-												<FontAwesomeIcon icon={faArrowRightLong} />
-											</div>
+									<div className='lower'>
+										<div className='profile'>
+											<img
+												src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}
+												alt={data.owner}
+												onError={(e) => {
+													setFix(true);
+													e.target.setAttribute(
+														'src',
+														'https://www.flickr.com/images/buddyicon.gif'
+													);
+												}}
+											/>
+											<span onClick={handleClickProfile}>{data.owner}</span>
+										</div>
+										<div className='arrow'>
+											<FontAwesomeIcon icon={faArrowRightLong} />
 										</div>
 									</div>
-								</article>
-							);
-						})}
-					</Masonry>
+								</div>
+							</article>
+						);
+					})}
 				</div>
 			</Layout>
 			{IsModal && (

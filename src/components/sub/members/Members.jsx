@@ -135,6 +135,7 @@ export default function Members() {
 										name='userid'
 										value={Val.userid}
 										onChange={handleChange}
+										placeholder='아이디를 입력하세요'
 									/>
 									{Errs.userid && <p>{Errs.userid}</p>}
 								</td>
@@ -151,6 +152,7 @@ export default function Members() {
 										name='pwd1'
 										value={Val.pwd1}
 										onChange={handleChange}
+										placeholder='비밀번호를 입력하세요'
 									/>
 									{Errs.pwd1 && <p>{Errs.pwd1}</p>}
 								</td>
@@ -167,6 +169,7 @@ export default function Members() {
 										name='pwd2'
 										value={Val.pwd2}
 										onChange={handleChange}
+										placeholder='비밀번호를 한번 더 입력하세요'
 									/>
 									{Errs.pwd2 && <p>{Errs.pwd2}</p>}
 								</td>
@@ -183,6 +186,7 @@ export default function Members() {
 										name='email'
 										value={Val.email}
 										onChange={handleChange}
+										placeholder='이메일을 입력하세요'
 									/>
 									{Errs.email && <p>{Errs.email}</p>}
 								</td>
@@ -244,6 +248,7 @@ export default function Members() {
 										rows='3'
 										value={Val.comments}
 										onChange={handleChange}
+										placeholder='남기는 말을 입력하세요'
 									></textarea>
 									{Errs.comments && <p>{Errs.comments}</p>}
 								</td>
