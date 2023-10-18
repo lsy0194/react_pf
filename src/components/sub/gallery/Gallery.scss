@@ -1,12 +1,6 @@
 @import '../../../styles/Variable.scss';
 
 .Gallery {
-	.loading {
-		position: fixed;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
 	.searchBox {
 		width: 100%;
 		margin-bottom: 15px;
@@ -45,16 +39,11 @@
 	}
 	.picFrame {
 		width: 100%;
-		opacity: 0;
-		transform: translateY(200px);
+		transform: translateY(30px);
 		transition: 0.5s;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
-		&.on {
-			opacity: 1;
-			transform: translateY(30px);
-		}
 		&::after {
 			content: '';
 			display: none;

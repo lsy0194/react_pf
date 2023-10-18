@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Layout from '../../common/layout/Layout';
 import Modal from '../../common/modal/Modal';
 import './Youtube.scss';
@@ -50,7 +51,9 @@ export default function Youtube() {
 										setIsModal(true);
 									}}
 								>
-									<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
+									<Link to={`/detail/${data.id}`}>
+										<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
+									</Link>
 								</div>
 								<h2>{tit.length > 60 ? tit.substr(0, 60) + '...' : tit}</h2>
 								<p>{desc.length > 180 ? desc.substr(0, 180) + '...' : desc}</p>
@@ -60,14 +63,14 @@ export default function Youtube() {
 					})}
 				</div>
 			</Layout>
-			{IsModal && (
+			{/*IsModal && (
 				<Modal setIsModal={setIsModal}>
 					<iframe
 						src={`https://www.youtube.com/embed/${Youtube[Index].snippet.resourceId.videoId}`}
 						title='youtube'
 					></iframe>
 				</Modal>
-			)}
+			) */}
 		</>
 	);
 }
