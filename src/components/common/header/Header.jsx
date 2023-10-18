@@ -1,8 +1,11 @@
 import { Link, NavLink } from 'react-router-dom';
 import './Header.scss';
 import { BsList } from 'react-icons/bs';
-import { useState } from 'react';
+import { toggle } from '../../../redux/menuSlice';
+import { useDispatch } from 'react-redux';
+
 export default function Header({ isMain }) {
+	const dispatch = useDispatch();
 	return (
 		<>
 			<header className='header'>
@@ -43,7 +46,7 @@ export default function Header({ isMain }) {
 					</li>
 				</ul>
 
-				<BsList fontSize={30} color={'#333'} className='bars' />
+				<BsList className='bars' fontSize={22} color={'#333'} onClick={() => dispatch(toggle())} />
 			</header>
 		</>
 	);
