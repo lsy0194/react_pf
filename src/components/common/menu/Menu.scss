@@ -1,10 +1,63 @@
 .menu {
-	width: calc(100% - 80px);
+	width: 260px;
 	height: 100vh;
 	position: fixed;
 	top: 0;
 	left: 0;
+	padding: 20px;
 	background: #111;
 	color: #fff;
 	z-index: 5;
+	a {
+		color: #fff;
+	}
+	h1 {
+		font: bold 2rem/1 'arial';
+		border-bottom: 2px solid red;
+		margin-bottom: 10px;
+	}
+	.link {
+		li {
+			padding-top: 8px;
+			.icon {
+				padding-left: 5px;
+				padding-right: 10px;
+			}
+			a {
+				font: normal 1rem/2 'arial';
+			}
+			&.on {
+				background: #fff;
+				a {
+					color: #111;
+				}
+				.icon {
+					color: #111;
+				}
+			}
+		}
+	}
+	.sns {
+		padding-top: 20px;
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		li {
+			width: 40px;
+			height: 40px;
+			border: 1px solid #fff;
+			border-radius: 100%;
+			display: flex;
+			justify-content: center;
+			a {
+				font-size: 25px;
+			}
+			&.on {
+				background-color: #fff;
+				a {
+					color: #111;
+				}
+			}
+		}
+	}
 }

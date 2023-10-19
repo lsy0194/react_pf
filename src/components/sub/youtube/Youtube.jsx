@@ -30,6 +30,7 @@ export default function Youtube() {
 						</p>
 					</div>
 					{Youtube.map((data, idx) => {
+						if (idx >= 4) return null;
 						let tit = data.snippet.title;
 						let desc = data.snippet.description;
 						let date = data.snippet.publishedAt;

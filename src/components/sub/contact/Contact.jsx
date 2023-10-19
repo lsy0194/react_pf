@@ -149,6 +149,7 @@ export default function Contact() {
 					<p>tktmadltmddu@naver.com</p>
 				</div>
 			</div>
+			<div className='underline'></div>
 			<div id='mapBox'>
 				<div className='btns'>
 					{/* <button onClick={() => setTraffic(true)}>주변 교통정보 보기</button>

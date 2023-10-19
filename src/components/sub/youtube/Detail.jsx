@@ -2,6 +2,8 @@ import Layout from '../../common/layout/Layout';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './Detail.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 function Detail() {
 	//url로 전단될 parameter값을 비구조화할당으로 받을 수 있음
 	const { id } = useParams();
@@ -20,13 +22,24 @@ function Detail() {
 	}, []);
 	return (
 		<Layout title={'Detail'}>
-			<h2>{Data?.title}</h2>
-			<p>{Data?.description}</p>
 			<div className='vidBox'>
-				<iframe
-					src={`https://www.youtube.com/embed/${Data?.resourceId.videoId}`}
-					title='youtube'
-				></iframe>
+				<iframe src={`https://www.youtube.com/embed/${Data?.resourceId.videoId}`} title='youtube' />
+			</div>
+			<div className='content'>
+				<div className='titBox'>
+					<h2>{Data?.title}</h2>
+					<FontAwesomeIcon
+						icon={faCaretDown}
+						className='btn'
+						onClick={(e) => {
+							const title = e.currentTarget.parentElement;
+							title.parentElement.classList.toggle('on');
+						}}
+					/>
+				</div>
+				<div className='conBox'>
+					<p>{Data?.description}</p>
+				</div>
 			</div>
 		</Layout>
 	);

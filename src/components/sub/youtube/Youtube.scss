@@ -1,11 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@100&family=Orbitron&family=Roboto:ital,wght@1,100&display=swap');
 
 .Youtube {
+	figure {
+		background: darkslategrey;
+	}
 	.underline {
 		border-bottom: 3px solid #333;
 		margin-bottom: 20px;
 	}
 	.container {
+		&::after {
+			content: '';
+			display: block;
+			clear: both;
+		}
 		.left {
 			width: 30%;
 			height: 100vh;

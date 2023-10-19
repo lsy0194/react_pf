@@ -11,7 +11,7 @@ function News() {
 	};
 	const [Post] = useState(getLocalDate);
 	return (
-		<section className='news'>
+		<section className='news myScroll'>
 			<div className='left'></div>
 			<div className='right'>
 				<h2>News</h2>

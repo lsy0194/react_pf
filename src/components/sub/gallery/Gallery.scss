@@ -39,30 +39,26 @@
 	}
 	.picFrame {
 		width: 100%;
-		transform: translateY(30px);
-		transition: 0.5s;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
+
 		&::after {
 			content: '';
-			display: none;
+			display: block;
 			clear: both;
 		}
 
 		article {
-			background-color: #fff;
-			width: 48%;
+			width: 25%;
+			padding: 10px;
 			float: left;
-			padding: 5px;
-			margin-bottom: 30px;
-			border: none;
-			transition: 0.5s;
+
 			.inner {
 				width: 100%;
+				padding: 10px;
+				background: #fff;
+				box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+
 				.pic {
 					width: 100%;
-					height: 30vw;
 				}
 				h2 {
 					font: normal 1rem/1.2 'arial';
@@ -70,44 +66,26 @@
 					margin-top: 10px;
 					margin-bottom: 40px;
 				}
-				.lower {
+				.profile {
+					width: 100%;
 					display: flex;
-					justify-content: space-between;
-					transition: 0.5s;
-					.profile {
-						width: 80%;
-						display: flex;
-						align-items: center;
-						gap: 20px;
-						img {
-							width: 50px;
-						}
-						span {
-							font-size: 0.8rem;
-						}
-						padding-bottom: 20px;
+					align-items: center;
+					gap: 20px;
+
+					span {
+						font-size: 0.8rem;
 					}
-					.arrow {
-						width: 15%;
-						font-size: 40px;
-						transform: rotate(45deg);
-					}
-					border-bottom: 1px solid black;
 				}
-			}
-			&.on {
-				transform: scale(1.05);
-				z-index: 2;
-				box-shadow: 6px 8px 10px rgba(131, 128, 132, 0.7);
 			}
 		}
 	}
 }
+
 .labtop {
 	.Gallery {
 		.picFrame {
 			article {
-				width: 33.3333%;
+				width: 32%;
 			}
 		}
 	}
@@ -116,7 +94,7 @@
 	.Gallery {
 		.picFrame {
 			article {
-				width: 50%;
+				width: 48%;
 			}
 		}
 	}

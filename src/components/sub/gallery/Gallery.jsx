@@ -71,13 +71,14 @@ export default function Gallery() {
 	return (
 		<>
 			<Layout title={'Gallery'}>
+				{' '}
+				<div className='underline'></div>
 				<div className='searchBox'>
 					<form onSubmit={handleSubmit}>
 						<input ref={refInput} type='text' placeholder='검색어를 입력하세요' />
 						<button>검색</button>
 					</form>
 				</div>
-
 				<div className='btnSet' ref={refBtnSet}>
 					<button className='my on' onClick={handleClickMy}>
 						My Gallery
@@ -141,11 +142,10 @@ export default function Gallery() {
 					</Masonry>
 				</div>
 			</Layout>
-			{IsModal && (
-				<Modal>
-					<img src={ActiveURL} alt='img' />
-				</Modal>
-			)}
+
+			<Modal>
+				<img src={ActiveURL} alt='img' />
+			</Modal>
 		</>
 	);
 }
