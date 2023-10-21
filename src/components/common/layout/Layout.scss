@@ -6,6 +6,7 @@
 	//transition: 0.5s;
 	transform: translateY(200px);
 	opacity: 0;
+
 	h1 {
 		font: normal 80px/1 'nanum myeongjo';
 		color: #444;
@@ -25,11 +26,10 @@
 	}
 	figure {
 		width: 0%;
-		height: 180px;
 		background: #555;
 		margin-bottom: 60px;
-		transition: width 1s 1.3s;
 	}
+
 	&.on {
 		opacity: 1;
 		transform: translateY(0px);

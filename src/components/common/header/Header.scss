@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,500&family=Nanum+Myeongjo:wght@800&family=Noto+Sans+KR:wght@100&family=Open+Sans&family=Orbitron&family=Roboto:ital,wght@1,100&display=swap');
+
 .header {
-	width: 70vw;
+	width: 90%;
 	padding: 30px 2px;
 	border-bottom: 1px solid #aaa;
 	display: flex;
@@ -7,6 +9,7 @@
 	margin: 0 auto;
 
 	h1 {
+		font-family: 'Bitter';
 		font-size: 1.5rem;
 		//color: #333;
 		color: var(--color1);
@@ -21,8 +24,9 @@
 		font-size: 1rem;
 		color: #888;
 
-		li {
-			a.active {
+		li a {
+			transition: 0.3 s;
+			&.active {
 				color: hotpink;
 			}
 		}

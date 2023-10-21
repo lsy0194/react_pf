@@ -3,26 +3,24 @@ import { useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useState } from 'react';
 import 'swiper/css';
-import { Link } from 'react-router-dom';
-
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 function Visual() {
 	const { data } = useSelector((store) => store.youtube);
 	const [Index, setIndex] = useState(0);
-	console.log(data);
 
 	return (
 		<section className='visual'>
 			<div className='titBox'>
 				<ul>
 					{data.map((tit, idx) => {
-						if (idx >= 5) return null;
+						if (idx >= 7) return null;
 						return (
 							<li key={idx} className={idx === Index ? 'on' : ''}>
 								<h3>{tit.snippet.title}</h3>
 								<p>{tit.snippet.description.substr(0, 300) + '...'}</p>
-								<button>
-									<Link to={`/detail/${tit.id}`}>View Deatil</Link>
-								</button>
+								<Link to={`/detail/${tit.id}`}>
+									<button>View Detail</button>
+								</Link>
 							</li>
 						);
 					})}
@@ -30,7 +28,7 @@ function Visual() {
 			</div>
 			<Swiper
 				slidesPerView={1}
-				spaceBetween={0}
+				spaceBetween={50}
 				loop={true}
 				centeredSlides={true}
 				onSlideChange={(el) => setIndex(el.realIndex)}
@@ -54,6 +52,7 @@ function Visual() {
 								<img src={vid.snippet.thumbnails.maxres.url} alt={vid.title} />
 								<img src={vid.snippet.thumbnails.maxres.url} alt={vid.title} />
 							</div>
+							<h2>{vid.snippet.title}</h2>
 						</SwiperSlide>
 					);
 				})}
@@ -61,5 +60,4 @@ function Visual() {
 		</section>
 	);
 }
-
 export default Visual;

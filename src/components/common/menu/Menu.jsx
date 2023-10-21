@@ -40,7 +40,7 @@ function Menu() {
 							e.currentTarget.classList.remove('on');
 						}}
 					>
-						<Link to='/'>LOGO</Link>
+						<Link to='/'>DCODELAB</Link>
 					</h1>
 
 					<ul className='link'>

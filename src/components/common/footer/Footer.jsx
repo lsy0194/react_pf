@@ -15,7 +15,7 @@ export default function Footer() {
 		<footer>
 			<div className='left'>
 				<h1>
-					<Link to='/'>LOGO</Link>
+					<Link to='/'>DCODELAB</Link>
 				</h1>
 				<p>Portfolio</p>
 

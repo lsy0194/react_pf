@@ -16,11 +16,10 @@ import { useMedia } from './hooks/useMedia';
 import { useEffect } from 'react';
 import { fetchYoutube } from './redux/youtubeSlice';
 import { fetchFlickr } from './redux/flickrSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 function App() {
 	const dispatch = useDispatch();
-	const isOpen = useSelector((store) => store.menu);
 
 	useEffect(() => {
 		dispatch(fetchYoutube());

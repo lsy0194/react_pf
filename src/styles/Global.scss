@@ -14,7 +14,8 @@ a {
 }
 
 body {
-	background: #eee;
+	background: #efefef;
+	overflow-x: hidden;
 }
 
 html {
@@ -29,6 +30,11 @@ html {
 
 table {
 	border-collapse: collapse;
+}
+.mobile {
+	* {
+		word-break: break-all;
+	}
 }
 fieldset {
 	border: none;

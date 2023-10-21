@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@100&family=Open+Sans&family=Orbitron&family=Roboto:ital,wght@1,100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,500&family=Nanum+Myeongjo:wght@800&family=Noto+Sans+KR:wght@100&family=Open+Sans&family=Orbitron&family=Roboto:ital,wght@1,100&display=swap');
 
 footer {
 	height: 25vh;
@@ -10,7 +10,7 @@ footer {
 		float: left;
 		padding: 20px;
 		h1 {
-			font: bold 40px/1.2 'Open Sans';
+			font: bold 35px/1.2 'Bitter';
 			border-bottom: 2px solid red;
 		}
 		p {
@@ -72,13 +72,19 @@ footer {
 		.cardBox {
 			a {
 				padding: 5px;
-				font-size: 35px;
+				font-size: 2.5vw;
 			}
 		}
 	}
 }
 .tablet {
 	footer {
+		.left {
+			h1 {
+				font: bold 25px/1.2 'Bitter';
+				border-bottom: 2px solid red;
+			}
+		}
 		.center {
 			width: 78vw;
 			float: right;
@@ -91,20 +97,32 @@ footer {
 
 .mobile {
 	footer {
+		height: 15vh;
 		.left {
+			width: 24vw;
+			height: 100%;
+			float: left;
+			padding: 10px;
 			h1 {
-				font: bold 30px/1.2 'Open Sans';
+				font: bold 3vw/1.2 'Bitter';
 				border-bottom: 2px solid red;
 			}
 			p {
 				padding-left: 10px;
 				color: red;
-				font: normal 15x/1 'arial';
+				font: normal 3vw/1 'arial';
 			}
 			ul {
+				padding-top: 20px;
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
 				li {
 					width: 30px;
 					height: 30px;
+					border: 1px solid #fff;
+					border-radius: 100%;
+					display: flex;
 					justify-content: center;
 					a {
 						font-size: 20px;
@@ -113,15 +131,15 @@ footer {
 			}
 		}
 		.center {
-			width: 78vw;
+			width: 70vw;
 			float: right;
 			ul {
 				display: flex;
-				justify-content: space-between;
-				align-items: center;
+				justify-content: flex-start;
+				align-content: center;
 				flex-wrap: wrap;
 				li {
-					font: bold 15px/1 'arial';
+					font: bold 2vw/1 'arial';
 					margin-right: 10px;
 					margin-bottom: 20px;
 				}
