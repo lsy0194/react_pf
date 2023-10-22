@@ -23,7 +23,6 @@ export default function Department() {
 
 	return (
 		<Layout title={'Department'}>
-			<div className='underline'></div>
 			<div className='Teamlogo'>
 				<FontAwesomeIcon icon={faUsers} />
 			</div>

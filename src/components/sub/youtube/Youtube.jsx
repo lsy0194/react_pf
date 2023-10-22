@@ -12,7 +12,6 @@ export default function Youtube() {
 	return (
 		<>
 			<Layout title={'Youtube'}>
-				<div className='underline'></div>
 				<div className='container'>
 					<div className='left'>
 						<h3>Lorem ipsum dolor sit.</h3>

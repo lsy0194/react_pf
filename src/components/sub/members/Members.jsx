@@ -19,8 +19,6 @@ export default function Members() {
 	const refSelGroup = useRef(null);
 	const [Val, setVal] = useState(initVal);
 	const [Errs, setErrs] = useState({});
-	const DebouncedVal = useDebounce(Val);
-	const [Mounted, setMounted] = useState(true);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -120,15 +118,6 @@ export default function Members() {
 		});
 		refSelGroup.current.value = '';
 	};
-	const showCheck = () => {
-		Mounted && setErrs(check(DebouncedVal));
-	};
-
-	useEffect(() => {
-		showCheck();
-		console.log(DebouncedVal);
-		return () => setMounted(false);
-	}, [DebouncedVal]);
 
 	return (
 		<Layout title={'Members'}>
