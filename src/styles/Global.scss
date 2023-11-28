@@ -16,6 +16,19 @@ a {
 body {
 	background: #efefef;
 	overflow-x: hidden;
+	main {
+		width: 100%;
+		background: var(--bg);
+		color: var(--color);
+	}
+	main.light {
+		background: var(--bg);
+		color: var(--color);
+	}
+	main.dark {
+		background: var(--darkBg);
+		color: var(--darkColor);
+	}
 }
 
 html {

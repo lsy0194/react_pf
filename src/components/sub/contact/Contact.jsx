@@ -1,6 +1,6 @@
 import Layout from '../../common/layout/Layout';
 import './Contact.scss';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import emailjs from '@emailjs/browser';
 
 export default function Contact() {
@@ -46,12 +46,22 @@ export default function Contact() {
 		),
 	});
 
-	const setCenter = () => {
+	const setCenter = useCallback(() => {
 		// 지도 중심을 이동 시킵니다
 		instance.current.setCenter(info.current[Index].latlng);
-	};
+	}, [Index]);
 
 	useEffect(() => {
+		//위의 정보값을 활용한 마커 객체 생성
+		const marker = new kakao.maps.Marker({
+			position: info.current[Index].latlng,
+			image: new kakao.maps.MarkerImage(
+				info.current[Index].imgSrc,
+				info.current[Index].imgSize,
+				info.current[Index].imgPos
+			),
+		});
+
 		//Index값이 변경될때마다 새로운 지도 레이어가 중첩되므로
 		//일단은 기존 map안의 모든 요소를 없애서 초기화
 		map.current.innerHTML = '';
@@ -73,13 +83,13 @@ export default function Contact() {
 				new kakao.maps.Roadview(view.current).setPanoId(panoId, info.current[Index].latlng); //panoId와 중심좌표를 통해 로드뷰 실행
 			}
 		);
-	}, [Index]);
+	}, [Index, kakao, setCenter]);
 
 	useEffect(() => {
 		Traffic
 			? instance.current.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)
 			: instance.current.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
-	}, [Traffic]);
+	}, [Traffic, kakao]);
 
 	const resetFrom = () => {
 		const nameform = form.current.querySelector('.nameEl');

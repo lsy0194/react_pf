@@ -17,6 +17,12 @@
 	.bars {
 		display: none;
 	}
+	.btnTheme {
+		display: block;
+		cursor: pointer;
+		color: red;
+	}
+
 	ul {
 		display: flex;
 		gap: 4vw;
@@ -54,5 +60,15 @@
 		.bars {
 			display: block;
 		}
+		.btnTheme {
+			display: none;
+		}
+	}
+}
+
+.dark {
+	.bars {
+		display: block;
+		color: #fff;
 	}
 }

@@ -1,13 +1,13 @@
 import { Link, NavLink } from 'react-router-dom';
 import './Header.scss';
 import { BsList } from 'react-icons/bs';
-import { toggle } from '../../../redux/menuSlice';
-import { useDispatch } from 'react-redux';
+import { useGlobalData } from '../../../hooks/useGlobalContext';
 
 export default function Header({ isMain }) {
-	const dispatch = useDispatch();
+	const { MenuOpen, setMenuOpen, setTheme, Theme } = useGlobalData();
+
 	return (
-		<header className='header myScroll'>
+		<header className='header  myScroll'>
 			<h1>
 				<Link to='/'>DCODELAB</Link>
 			</h1>
@@ -19,13 +19,13 @@ export default function Header({ isMain }) {
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to='/gallery' activeClassName='active'>
-						Gallery
+					<NavLink to='/community' activeClassName='active'>
+						Community
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to='/Community' activeClassName='active'>
-						Community
+					<NavLink to='/gallery' activeClassName='active'>
+						Gallery
 					</NavLink>
 				</li>
 				<li>
@@ -45,7 +45,16 @@ export default function Header({ isMain }) {
 				</li>
 			</ul>
 
-			<BsList className='bars' fontSize={22} color={'#333'} onClick={() => dispatch(toggle())} />
+			<BsList
+				className='bars'
+				fontSize={22}
+				color={'#333'}
+				onClick={() => setMenuOpen(!MenuOpen)}
+			/>
+
+			<span className='btnTheme' onClick={() => setTheme(!Theme)}>
+				Theme
+			</span>
 		</header>
 	);
 }

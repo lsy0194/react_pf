@@ -161,3 +161,27 @@
 		}
 	}
 }
+
+.dark {
+	.Community {
+		.showBox {
+			width: 100%;
+			padding: 20px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			article {
+				width: 47%;
+				height: 30vh;
+				background: #111;
+				color: #fff;
+				padding: 15px;
+				margin-bottom: 40px;
+				display: flex;
+				justify-content: space-between;
+				flex-wrap: wrap;
+				border: 2px solid #fff;
+			}
+		}
+	}
+}

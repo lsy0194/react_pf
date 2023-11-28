@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export const fetchFlickr = createAsyncThunk('flickr/request', async (opt) => {
 	let url = '';
-	const api_key = '2a1a0aebb34012a99c23e13b49175343';
+	const api_key = 'f5f709637c0790e1103971c1302b229e';
 	const method_interest = 'flickr.interestingness.getList';
 	const method_user = 'flickr.people.getPhotos';
 	const method_search = 'flickr.photos.search';

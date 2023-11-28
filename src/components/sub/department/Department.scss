@@ -63,6 +63,7 @@
 			}
 			p {
 				text-align: center;
+
 				margin-bottom: 35px;
 			}
 			.sns {
@@ -117,6 +118,31 @@
 				.pic {
 					width: 45vw;
 					height: 45vw;
+				}
+			}
+		}
+	}
+}
+
+.dark {
+	.Department {
+		.Teamtit {
+			p {
+				color: #fff;
+			}
+		}
+
+		.memberBox {
+			article {
+				background: #868686;
+				&.on {
+					transform: scale(1.18);
+					.pic {
+						img {
+							filter: grayscale(0%);
+							box-shadow: 6px 8px 10px rgba(229, 229, 229, 0.7);
+						}
+					}
 				}
 			}
 		}

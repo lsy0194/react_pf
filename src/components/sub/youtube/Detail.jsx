@@ -16,10 +16,9 @@ function Detail() {
 		fetch(`${baseURL}?key=${api_key}&id=${id}&part=snippet`)
 			.then((data) => data.json())
 			.then((json) => {
-				console.log(json.items[0].snippet);
 				setData(json.items[0].snippet);
 			});
-	}, []);
+	}, [id]);
 	return (
 		<Layout title={'Detail'}>
 			<div className='vidBox'>

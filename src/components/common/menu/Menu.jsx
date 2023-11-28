@@ -1,8 +1,7 @@
 import './Menu.scss';
 import { Link, NavLink } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useSelector, useDispatch } from 'react-redux';
-import { close } from '../../../redux/menuSlice';
+import { useGlobalData } from '../../../hooks/useGlobalContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faFacebookF,
@@ -19,18 +18,18 @@ import {
 import { faImages } from '@fortawesome/free-regular-svg-icons';
 
 function Menu() {
-	const dispatch = useDispatch();
-	const { isOpen } = useSelector((store) => store.menu);
+	const { MenuOpen, setMenuOpen, setTheme, Theme } = useGlobalData();
+
 	return (
 		<AnimatePresence>
-			{isOpen && (
+			{MenuOpen && (
 				<motion.aside
 					className='menu'
 					initial={{ x: '-100%' }}
 					animate={{ x: '0%' }}
 					exit={{ x: '-100%' }}
 					transition={{ duration: 0.5 }}
-					onClick={() => dispatch(close())}
+					onClick={() => setMenuOpen(false)}
 				>
 					<h1
 						onMouseEnter={(e) => {
@@ -121,6 +120,18 @@ function Menu() {
 							<NavLink to='/contact' activeClassName='active'>
 								Contact
 							</NavLink>
+						</li>
+						<li
+							onMouseEnter={(e) => {
+								e.currentTarget.classList.add('on');
+							}}
+							onMouseLeave={(e) => {
+								e.currentTarget.classList.remove('on');
+							}}
+							className='btnTheme'
+							onClick={() => setTheme(!Theme)}
+						>
+							<a href=''>Theme</a>
 						</li>
 					</ul>
 

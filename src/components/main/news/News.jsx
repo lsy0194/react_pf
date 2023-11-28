@@ -1,10 +1,35 @@
 import './News.scss';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 function News() {
 	const path = process.env.PUBLIC_URL;
 	const [Book, setBook] = useState([]);
 	const [BIndex, setBIndex] = useState(0);
 	const refOn = useRef(null);
+
+	const dummyData = useMemo(() => {
+		return [
+			{
+				title: 'title4',
+				content: 'Here comes content description in detail4.',
+				data: new Date(),
+			},
+			{
+				title: 'title3',
+				content: 'Here comes content description in detail3.',
+				data: new Date(),
+			},
+			{
+				title: 'title2',
+				content: 'Here comes content description in detail2.',
+				data: new Date(),
+			},
+			{
+				title: 'title1',
+				content: 'Here comes content description in detail1.',
+				data: new Date(),
+			},
+		];
+	});
 
 	useEffect(() => {
 		fetch(`${path}/DB/book.json`)
@@ -23,13 +48,18 @@ function News() {
 		else setBIndex(BIndex + 1);
 	};
 
-	const getLocalDate = () => {
+	const getLocalData = useCallback(() => {
 		const data = localStorage.getItem('post');
 		if (data) return JSON.parse(data);
 		else return [];
-	};
+	}, [dummyData]);
 
-	const [Post] = useState(getLocalDate);
+	const [Post, setPost] = useState(getLocalData);
+
+	useEffect(() => {
+		setPost(getLocalData());
+	}, []);
+
 	return (
 		<section className='news myScroll'>
 			<div className='left'>

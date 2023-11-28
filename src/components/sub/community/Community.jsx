@@ -5,7 +5,7 @@ import './Community.scss';
 import { useRef, useState, useEffect } from 'react';
 
 export default function Community() {
-	const dummyData = [
+	const dummyData = useRef([
 		{
 			title: 'title4',
 			content: 'Here comes content description in detail4.',
@@ -26,11 +26,11 @@ export default function Community() {
 			content: 'Here comes content description in detail1.',
 			data: new Date(),
 		},
-	];
+	]);
 	const getLocalData = () => {
 		const data = localStorage.getItem('post');
 		if (data) return JSON.parse(data);
-		else return dummyData;
+		else return dummyData.current;
 	};
 	const refInput = useRef(null);
 	const refTextarea = useRef(null);

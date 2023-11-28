@@ -66,13 +66,13 @@ export default function Footer() {
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to='/Community' activeClassName='active'>
-							Community
+						<NavLink to='/gallery' activeClassName='active'>
+							Gallery
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to='/gallery' activeClassName='active'>
-							Gallery
+						<NavLink to='/Community' activeClassName='active'>
+							Community
 						</NavLink>
 					</li>
 					<li>

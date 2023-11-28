@@ -1,10 +1,14 @@
+import { useDebounce } from '../../../hooks/useDebounce';
 import Layout from '../../common/layout/Layout';
 import './Members.scss';
 import { useState, useRef, useEffect } from 'react';
-import { useDebounce } from '../../../hooks/useDebounce';
 
+//해당 컴포넌트에 메모리 누수 콘솔오류가 뜨는 이유 (memory leak);
+//Errs스테이트에 값이 담기는 시점이 useDebounce에 의해서 0.5초 이후인데
+//Members 컴포넌트 접속하자마자 0.5초안에 다른 페이지로 넘어가면
+//아직 state에 값이 담기지 않았는데 unmount된 경우이므로 뜨는 오류
+//컴포넌트 unmount시 값을 Mounted값을 false로 변경해주고 해당 값이 true일때에만 state변경처리
 export default function Members() {
-	console.log('member');
 	const initVal = {
 		userid: '',
 		pwd1: '',
@@ -12,6 +16,7 @@ export default function Members() {
 		email: '',
 		gender: '',
 		interests: [],
+		edu: '',
 		comments: '',
 	};
 	const refCheckGroup = useRef(null);
@@ -19,15 +24,25 @@ export default function Members() {
 	const refSelGroup = useRef(null);
 	const [Val, setVal] = useState(initVal);
 	const [Errs, setErrs] = useState({});
+	const [Mounted, setMounted] = useState(true);
+
+	//기존의 onchange이벤트가 발생할때마다 변경되는 Val값을 useDebounce를 이용해서
+	//Debouncing이 적용된 또다른 State를 전달 받음
+	const DebouncedVal = useDebounce(Val);
+
+	const resetForm = (e) => {
+		e.preventDefault();
+		setVal(initVal);
+
+		[refCheckGroup, refRadioGroup].forEach((el) =>
+			el.current.querySelectorAll('input').forEach((input) => (input.checked = false))
+		);
+		refSelGroup.current.value = '';
+	};
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setVal({ ...Val, [name]: value });
-	};
-
-	const handleRadio = (e) => {
-		const { name, checked } = e.target;
-		setVal({ ...Val, [name]: checked });
 	};
 
 	const handleCheck = (e) => {
@@ -41,13 +56,15 @@ export default function Members() {
 	};
 
 	const check = (value) => {
-		const num = /[0-9]/; //0-9까지의 모든 값을 정규표현식으로 범위지정
-		const txt = /[a-zA-Z]/; //대소문자 구분없이 모든 문자 범위지정
-		const spc = /[!@#$%^*()_]/; //모든 특수문자 지정
+		const num = /[0-9]/;
+		const txt = /[a-zA-Z]/;
+		const spc = /[!@#$%^*()_]/;
 		const errs = {};
+
 		if (value.userid.length < 5) {
 			errs.userid = '아이디는 최소 5글자 이상 입력하세요.';
 		}
+
 		//비밀번호 인증 (5글자 이상, 문자, 숫자, 특수문자 모두 포함)
 		if (
 			value.pwd1.length < 5 ||
@@ -80,25 +97,28 @@ export default function Members() {
 
 		//성별인증
 		if (!value.gender) {
-			errs.gender = '성별은 필수체크 항목입니다. ';
+			errs.gender = '성별은 필수 체크항목입니다.';
 		}
-		//관심사 인증
+
+		//관심사인증
 		if (value.interests.length === 0) {
-			errs.interests = '취미를 하나이상 체크해주세요.';
+			errs.interests = '관심사를 하나이상 체크해주세요.';
 		}
-		//학력인증
+
+		//학력 인증
 		if (!value.edu) {
-			errs.edu = '학력을 선택하세요';
+			errs.edu = '학력을 선택하세요.';
 		}
-		//남기는말
+		//남기는말 인증
 		if (value.comments.length < 10) {
-			errs.comments = '남기는 말은 10글자 이상입력해주세요';
+			errs.comments = '남기는말은 10글자 이상 입력하세요.';
 		}
 		return errs;
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
 		if (Object.keys(check(Val)).length === 0) {
 			alert('인증통과');
 		} else {
@@ -106,18 +126,21 @@ export default function Members() {
 		}
 	};
 
-	const resetFrom = (e) => {
-		e.preventDefault();
-		setVal(initVal);
-		// const checks = refCheckGroup.current.querySelectorAll('input');
-		// const radios = refRadioGroup.current.querySelectorAll('input');
-		// checks.forEach((input) => (input.checked = false));
-		// radios.forEach((input) => (input.checked = false));
-		[refCheckGroup, refRadioGroup].forEach((el) => {
-			el.current.querySelectorAll('input').forEach((input) => (input.checked = false));
-		});
-		refSelGroup.current.value = '';
+	const showCheck = () => {
+		Mounted && setErrs(check(DebouncedVal));
 	};
+
+	//의존성 배열에 Debouncing이 적용된 state값을 등록해서
+	//함수의 핸들러함수 호출의 빈도를 줄여줌
+	//useDebounce는 state의 변경횟수 자체를 줄이는게 아니라.
+	//해당 state에 따라 호출되는 함수의 빈도를 줄임[]
+	useEffect(() => {
+		console.log('Val state값 변경에 의해서 showCheck함수 호출');
+		showCheck();
+		console.log(DebouncedVal);
+
+		return () => setMounted(false);
+	}, [DebouncedVal]);
 
 	return (
 		<Layout title={'Members'}>
@@ -129,7 +152,7 @@ export default function Members() {
 							{/* userid */}
 							<tr>
 								<th scope='row'>
-									<label htmlFor='userid'>ID</label>
+									<label htmlFor='userid'>Userid</label>
 								</th>
 								<td>
 									<input
@@ -138,15 +161,16 @@ export default function Members() {
 										name='userid'
 										value={Val.userid}
 										onChange={handleChange}
-										placeholder='아이디를 입력하세요'
+										placeholder='아이디를 입력하세요.'
 									/>
 									{Errs.userid && <p>{Errs.userid}</p>}
 								</td>
 							</tr>
+
 							{/* password */}
 							<tr>
 								<th scope='row'>
-									<label htmlFor='pwd1'>password</label>
+									<label htmlFor='pwd1'>Password</label>
 								</th>
 								<td>
 									<input
@@ -155,15 +179,16 @@ export default function Members() {
 										name='pwd1'
 										value={Val.pwd1}
 										onChange={handleChange}
-										placeholder='비밀번호를 입력하세요'
+										placeholder='비밀번호를 입력하세요.'
 									/>
 									{Errs.pwd1 && <p>{Errs.pwd1}</p>}
 								</td>
 							</tr>
+
 							{/* re password */}
 							<tr>
 								<th scope='row'>
-									<label htmlFor='pwd2'>re-password</label>
+									<label htmlFor='pwd2'>Re-Password</label>
 								</th>
 								<td>
 									<input
@@ -172,15 +197,16 @@ export default function Members() {
 										name='pwd2'
 										value={Val.pwd2}
 										onChange={handleChange}
-										placeholder='비밀번호를 한번 더 입력하세요'
+										placeholder='비밀번호를 재입력하세요.'
 									/>
 									{Errs.pwd2 && <p>{Errs.pwd2}</p>}
 								</td>
 							</tr>
+
 							{/* email */}
 							<tr>
 								<th scope='row'>
-									<label htmlFor='email'>e-mail</label>
+									<label htmlFor='email'>E-mail</label>
 								</th>
 								<td>
 									<input
@@ -189,14 +215,15 @@ export default function Members() {
 										name='email'
 										value={Val.email}
 										onChange={handleChange}
-										placeholder='이메일을 입력하세요'
+										placeholder='이메일주소를 입력하세요.'
 									/>
 									{Errs.email && <p>{Errs.email}</p>}
 								</td>
 							</tr>
+
 							{/* gender */}
 							<tr>
-								<th>gender</th>
+								<th>Gender</th>
 								<td ref={refRadioGroup}>
 									<label htmlFor='female'>female</label>
 									<input
@@ -218,9 +245,10 @@ export default function Members() {
 									{Errs.gender && <p>{Errs.gender}</p>}
 								</td>
 							</tr>
+
 							{/* interests */}
 							<tr>
-								<th>interests</th>
+								<th>Interests</th>
 								<td ref={refCheckGroup}>
 									<label htmlFor='sports'>sports</label>
 									<input
@@ -248,18 +276,18 @@ export default function Members() {
 										defaultValue='music'
 										onChange={handleCheck}
 									/>
-
 									{Errs.interests && <p>{Errs.interests}</p>}
 								</td>
 							</tr>
+
 							{/* education */}
 							<tr>
 								<th>
-									<label htmlFor='edu'>education</label>
+									<label htmlFor='edu'>Education</label>
 								</th>
 								<td>
 									<select name='edu' id='edu' onChange={handleChange} ref={refSelGroup}>
-										<option value=''>최종학력을 선택하세요</option>
+										<option value=''>최종학력 선택하세요</option>
 										<option value='elementary-school'>초등학교 졸업</option>
 										<option value='middle-school'>중학교 졸업</option>
 										<option value='high-school'>고등학교 졸업</option>
@@ -268,10 +296,11 @@ export default function Members() {
 									{Errs.edu && <p>{Errs.edu}</p>}
 								</td>
 							</tr>
+
 							{/* comments */}
 							<tr>
 								<th>
-									<label htmlFor='comments'>comments</label>
+									<label htmlFor='comments'>Comments</label>
 								</th>
 								<td>
 									<textarea
@@ -281,15 +310,16 @@ export default function Members() {
 										rows='3'
 										value={Val.comments}
 										onChange={handleChange}
-										placeholder='남기는 말을 입력하세요'
+										placeholder='남기는 말을 입력하세요.'
 									></textarea>
 									{Errs.comments && <p>{Errs.comments}</p>}
 								</td>
 							</tr>
+
 							{/* btnSet */}
 							<tr>
-								<th colSpan='2' className='btnSet'>
-									<input type='reset' value='cancel' onClick={resetFrom} />
+								<th colSpan='2'>
+									<input type='reset' value='cancel' onClick={resetForm} />
 									<input type='submit' value='send' />
 								</th>
 							</tr>
@@ -300,3 +330,14 @@ export default function Members() {
 		</Layout>
 	);
 }
+
+/*
+	react-hook-form을 쓰지 않고 직접 기능을 만들었냐?
+	-- 라이브러리는 언제든지 연결할 수 있는건데, 아직 배우는 입장이기 때문에 부족하나마 어떤 인증로직이 처리되는지 직접 만들어 보고 싶었다.
+
+	그래서 checkbox, radio, selector, textarea 같이 필수입력사항이 아닌 요소도 직접 인증구현을 해봤다.
+	인증처리 하면서 제일 힘들었던 부분은 비밀번호, 이메일 인증 구현이 힘들었다
+
+	구글링을 해보니 정규표현식의 예시코드가 많이 있었지만 아직 정규표현식을 제대로 공부한것이 아니라 모르는 상태에서 붙여넣기 식으로 구현하기는 싫어서 
+	내가 알고 있는 문자열 관련 메서드를 최대한 활용해서 구현해봤다
+*/

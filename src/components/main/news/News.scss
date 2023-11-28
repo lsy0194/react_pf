@@ -4,7 +4,7 @@
 	width: 100%;
 	height: 100vh;
 	background: #efefef;
-	padding: 20px;
+	padding: 10vw;
 	position: relative;
 	top: 0;
 	left: 0;
@@ -15,7 +15,7 @@
 		position: absolute;
 		top: 20;
 		left: 20;
-		width: 48%;
+		width: 38vw;
 		height: 95%;
 		background: rgb(224, 224, 224);
 		.Btitle {
@@ -66,16 +66,16 @@
 					word-break: break-all;
 
 					h2 {
-						font: bold 1.8vw/1.5 'arial';
+						font: bold 1.5vw/1.5 'arial';
 					}
 					.subbar {
-						width: 15vw;
+						width: 10vw;
 						height: 2px;
 						background: #000;
 						margin-bottom: 20px;
 					}
 					p {
-						font: normal 1.5vw/1 'Noto Sans Korean';
+						font: normal 1.4vw/1 'Noto Sans Korean';
 						word-break: break-all;
 					}
 				}
@@ -134,8 +134,8 @@
 	.right {
 		border: 2px solid black;
 		float: right;
-		width: 48%;
-		height: 100%;
+		width: 38vw;
+		height: 95vh;
 		padding: 20px;
 		background: rgb(224, 224, 224);
 		.txtBox {
@@ -198,23 +198,62 @@
 
 .tablet {
 	.news {
+		height: 200vh;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
 		.left {
-			width: 58%;
+			position: absolute;
+			width: 100%;
+			background: rgb(224, 224, 224);
+			height: 48%;
+			border: none;
+			border-bottom: 3px solid black;
 			.bar {
-				width: 25vw;
+				width: 50vw;
+				height: 2.5px;
+				background: #000;
+			}
+			.booklist {
+				display: flex;
+				justify-content: center;
+				flex-wrap: wrap;
+				width: 100%;
+				height: 75%;
+				position: relative;
+				top: 40px;
+				article {
+					.txtBox {
+						height: 55vh;
+						h2 {
+							font: bold 3.5vw/1.5 'arial';
+						}
+						.subbar {
+							width: 29vw;
+							height: 2px;
+							background: #000;
+							margin-bottom: 20px;
+						}
+						p {
+							font: normal 3vw/1 'Noto Sans Korean';
+						}
+					}
+				}
 			}
 		}
-
 		.right {
-			float: right;
-			width: 40%;
-			height: 100%;
+			position: absolute;
+			float: left;
+			width: 100%;
+			height: 48%;
+			background: rgb(224, 224, 224);
+			top: 50%;
+			border: none;
 
 			.txtBox {
 				.bar {
-					width: 26vw;
+					width: 52vw;
 					height: 2.5px;
-					float: right;
 					background: #000;
 					margin-bottom: 50px;
 				}
@@ -224,15 +263,13 @@
 				display: flex;
 				flex-wrap: wrap;
 				justify-content: space-between;
-
 				article {
-					width: 47%;
+					width: 49%;
 					height: 31.5vh;
-					.subtitle {
+					h2 {
+						float: left;
 						width: 100%;
-						height: 20px;
-						font: bold 2.6vw/1 'arial';
-						line-height: 40px;
+						font: bold 30px/1 'arial';
 						word-break: break-all;
 					}
 					p {
@@ -286,7 +323,7 @@
 							margin-bottom: 20px;
 						}
 						p {
-							font: normal 5vw/1 'Noto Sans Korean';
+							font: normal 3vw/1 'Noto Sans Korean';
 						}
 					}
 				}
@@ -329,6 +366,156 @@
 						font: normal 16px/1 'arial';
 						word-break: break-all;
 					}
+				}
+			}
+		}
+	}
+}
+
+.dark {
+	.news {
+		background: #111;
+
+		.left {
+			border: 2px solid #fff;
+			padding: 20px;
+			position: absolute;
+			width: 38vw;
+			height: 95%;
+			background: #111;
+			color: #fff;
+			.Btitle {
+				font: bold 80px/1 'Nanum Myeongjo';
+			}
+			.bar {
+				width: 14vw;
+				height: 2.5px;
+				background: #fff;
+			}
+			.booklist {
+				display: flex;
+				justify-content: center;
+				flex-wrap: wrap;
+				width: 100%;
+				height: 75%;
+				position: relative;
+				top: 40px;
+				article {
+					display: none;
+					position: absolute;
+					width: 100%;
+					height: 89%;
+					display: flex;
+					background: #111;
+					flex-wrap: wrap;
+					padding: 20px;
+					opacity: 0;
+					display: flex;
+					justify-content: space-between;
+					transform: translateX(-200px);
+					transition: 0.5s 0.5s;
+					border: 2px solid black;
+					.pic {
+						width: 50%;
+						height: 100%;
+						img {
+							width: 100%;
+							height: 100%;
+						}
+					}
+					.txtBox {
+						position: relative;
+						width: 49%;
+						padding: 20px;
+						border: 2px solid black;
+						background: #444;
+						word-break: break-all;
+
+						h2 {
+							font: bold 1.5vw/1.5 'arial';
+						}
+						.subbar {
+							width: 10vw;
+							height: 2px;
+							background: #fff;
+							margin-bottom: 20px;
+						}
+						p {
+							font: normal 1.4vw/1 'Noto Sans Korean';
+							word-break: break-all;
+						}
+					}
+					&.on {
+						display: flex;
+						opacity: 1;
+						transform: translateX(0px);
+						.bar {
+							width: 130px;
+						}
+					}
+				}
+				.btn {
+					position: absolute;
+					width: 100%;
+					height: 10%;
+					bottom: 0;
+					left: 0;
+					display: flex;
+					justify-content: space-between;
+					gap: 30px;
+					button {
+						background: #efefef;
+						width: 100%;
+						height: 100%;
+						border: none;
+						display: inline-block;
+						font-size: 1.5rem;
+						position: relative;
+						font-family: 'arial';
+						font-weight: bold;
+						&::before {
+							content: '';
+							display: block;
+							width: 100%;
+							height: 1px;
+							background: #999;
+							position: absolute;
+							top: 0;
+							right: -200;
+						}
+						&::after {
+							content: '';
+							display: block;
+							width: 100%;
+							height: 1px;
+							background: #999;
+							position: absolute;
+							bottom: 0;
+							left: -200;
+						}
+					}
+				}
+			}
+		}
+		.right {
+			border: 2px solid #fff;
+			float: right;
+			width: 38vw;
+			height: 95vh;
+			padding: 20px;
+			background: #111;
+			color: #fff;
+			.txtBox {
+				.bar {
+					background: #fff;
+				}
+			}
+
+			.postWrap {
+				border: 2px solid black;
+				article {
+					background: #111;
+					border: 2px solid #fff;
 				}
 			}
 		}

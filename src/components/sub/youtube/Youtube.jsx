@@ -1,14 +1,11 @@
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Layout from '../../common/layout/Layout';
-import Modal from '../../common/modal/Modal';
 import './Youtube.scss';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useYoutubeQuery } from '../../../hooks/useYoutube';
 
 export default function Youtube() {
-	const Youtube = useSelector((store) => store.youtube.data);
-	const [IsModal, setIsModal] = useState(false);
-	const [Index, setIndex] = useState([]);
+	const { data: Youtube, isSuccess } = useYoutubeQuery();
+	console.log(Youtube);
 	return (
 		<>
 			<Layout title={'Youtube'}>
@@ -28,39 +25,34 @@ export default function Youtube() {
 							sit?
 						</p>
 					</div>
-					{Youtube.map((data, idx) => {
-						if (idx >= 4) return null;
-						let tit = data.snippet.title;
-						let desc = data.snippet.description;
-						let date = data.snippet.publishedAt;
-						return (
-							<article
-								key={idx}
-								className='Ycontent'
-								onMouseOver={(e) => {
-									e.currentTarget.classList.add('on');
-								}}
-								onMouseLeave={(e) => {
-									e.currentTarget.classList.remove('on');
-								}}
-							>
-								<div
-									className='pic'
-									onClick={() => {
-										setIndex(idx);
-										setIsModal(true);
+					{isSuccess &&
+						Youtube.map((data, idx) => {
+							if (idx >= 4) return null;
+							let tit = data.snippet.title;
+							let desc = data.snippet.description;
+							let date = data.snippet.publishedAt;
+							return (
+								<article
+									key={idx}
+									className='Ycontent'
+									onMouseOver={(e) => {
+										e.currentTarget.classList.add('on');
+									}}
+									onMouseLeave={(e) => {
+										e.currentTarget.classList.remove('on');
 									}}
 								>
-									<Link to={`/detail/${data.id}`}>
-										<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
-									</Link>
-								</div>
-								<h2>{tit.length > 60 ? tit.substr(0, 60) + '...' : tit}</h2>
-								<p>{desc.length > 180 ? desc.substr(0, 180) + '...' : desc}</p>
-								<span>{date.split('T')[0].split('-').join('.')}</span>
-							</article>
-						);
-					})}
+									<div className='pic'>
+										<Link to={`/detail/${data.id}`}>
+											<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
+										</Link>
+									</div>
+									<h2>{tit.length > 60 ? tit.substr(0, 60) + '...' : tit}</h2>
+									<p>{desc.length > 180 ? desc.substr(0, 180) + '...' : desc}</p>
+									<span>{date.split('T')[0].split('-').join('.')}</span>
+								</article>
+							);
+						})}
 				</div>
 			</Layout>
 			{/*IsModal && (
